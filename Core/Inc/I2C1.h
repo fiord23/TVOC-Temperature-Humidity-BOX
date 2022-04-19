@@ -2,5 +2,5 @@
 #ifndef __I2C1_H
 #define __I2C1_H
 
-I2C1 init ();
+void i2c1_init();
 #endif //I2C1

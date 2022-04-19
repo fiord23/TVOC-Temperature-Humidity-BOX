@@ -1,7 +1,8 @@
 //init I2C1 c
 #include "I2C1.h"
+//PB8 SCL, PB9 SDA
 
-void I2C1 init (void)
+void i2c1_init (void)
 {
   
 }
