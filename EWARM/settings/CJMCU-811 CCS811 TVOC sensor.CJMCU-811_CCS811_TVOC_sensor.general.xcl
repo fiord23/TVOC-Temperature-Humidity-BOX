@@ -1,0 +1,15 @@
+"C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armPROC.dll" 
+
+"C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armSTLINK.dll" 
+
+"D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\CJMCU-811 CCS811 TVOC sensor\EWARM\CJMCU-811 CCS811 TVOC sensor\Exe\CJMCU-811 CCS811 TVOC sensor.out" 
+
+--plugin="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armbat.dll" 
+
+--device_macro="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\config\debugger\ST\STM32F4xx.dmac" 
+
+--flash_loader="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\config\flashloader\ST\FlashSTM32F446xE.board" 
+
+
+
+
