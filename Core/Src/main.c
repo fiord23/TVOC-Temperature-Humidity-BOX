@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "CCS811.h"
 #include "spi_ili9341.h"
+#include "I2C1.h"
 
 #define AHT10_Adress 0x38 << 1   
 
@@ -117,8 +118,8 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_I2C1_Init();
-
+//  MX_I2C1_Init();
+  i2c1_init (); // useer function
   /* USER CODE BEGIN 2 */
 
    LCD_ini();
