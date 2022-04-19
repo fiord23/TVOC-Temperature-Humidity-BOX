@@ -139,3 +139,18 @@
 4	895	6720820230812098	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Obj/Application/User/Core/main.o	fa81100e424c8272
 905	1051	6720820232477637	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.out	24cf0b55b9fc4fb0
 1099	1146	6720820233535022	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.hex	71a7dffe12cd82ff
+11	1127	6720865215698956	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Obj/Application/User/Core/I2C1.o	d020be8dca2dfbc7
+127	1489	6720865219319349	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Obj/Application/User/Core/main.o	fa81100e424c8272
+1502	4369	6720865248183043	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.out	24cf0b55b9fc4fb0
+4415	4534	6720865249978456	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.hex	71a7dffe12cd82ff
+3	326	6720867546597909	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Obj/Application/User/Core/I2C1.o	d020be8dca2dfbc7
+19	766	6720867550975947	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Obj/Application/User/Core/main.o	fa81100e424c8272
+778	964	6720867553060131	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.out	24cf0b55b9fc4fb0
+1007	1054	6720867554077372	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.hex	71a7dffe12cd82ff
+3	754	6720867923005418	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Obj/Application/User/Core/main.o	fa81100e424c8272
+768	917	6720867924730665	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.out	24cf0b55b9fc4fb0
+961	1009	6720867925787864	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.hex	71a7dffe12cd82ff
+22	561	6720871639094446	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Obj/Application/User/Core/I2C1.o	d020be8dca2dfbc7
+3	940	6720871642864245	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Obj/Application/User/Core/main.o	fa81100e424c8272
+952	1100	6720871644609798	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.out	24cf0b55b9fc4fb0
+1143	1191	6720871645627037	D:/Work/Programming/Sensors/Temperature_and_CO2_to_display/TVOC-Temperature-Humidity-BOX/EWARM/CJMCU-811 CCS811 TVOC sensor/Exe/CJMCU-811 CCS811 TVOC sensor.hex	71a7dffe12cd82ff

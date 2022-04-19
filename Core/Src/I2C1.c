@@ -16,5 +16,14 @@ void i2c1_init (void)
   GPIOB->IDR |= (1 << GPIO_IDR_ID8_Pos | 1 << GPIO_IDR_ID9_Pos ); // SET PB8 anb PB9 to input must be 0x1
   
   //-------------------SET I2C1 CONFIG----------------------------------
+  RCC->APB1ENR |= (1 <<RCC_APB1ENR_I2C1EN_Pos); //Enable I2C1 clock
+  I2C1->CR2 |= (0x2d << I2C_CR2_FREQ_Pos);//Set frequency0x2d
+  I2C1->CCR |= (0x0e1 << I2C_CCR_CCR_Pos);//Clock control Register CCR 0x0e1
+  I2C1->TRISE |= (0x2e << I2C_TRISE_TRISE_Pos);//TRISE =0x2e
+  I2C1->CR1 |= (1 << I2C_CR1_PE_Pos);//PE = 1 enable peripheral
+  NVIC_SetPriority(I2C1_ER_IRQn, 0); //Set interrupt Error priority 0
+  NVIC_SetPriority(I2C1_EV_IRQn, 1);// Set interrupt Event to 1
+  NVIC_EnableIRQ(I2C1_ER_IRQn); //Enable Interrupt error
+  NVIC_EnableIRQ(I2C1_EV_IRQn); // Enable Interrupt Event
   
 }
