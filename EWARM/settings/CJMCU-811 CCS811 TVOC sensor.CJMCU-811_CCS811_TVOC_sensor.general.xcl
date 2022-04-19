@@ -2,7 +2,7 @@
 
 "C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armSTLINK.dll" 
 
-"D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\CJMCU-811 CCS811 TVOC sensor\EWARM\CJMCU-811 CCS811 TVOC sensor\Exe\CJMCU-811 CCS811 TVOC sensor.out" 
+"D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\EWARM\CJMCU-811 CCS811 TVOC sensor\Exe\CJMCU-811 CCS811 TVOC sensor.out" 
 
 --plugin="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armbat.dll" 
 

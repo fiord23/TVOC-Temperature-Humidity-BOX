@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\CJMCU-811 CCS811 TVOC sensor\EWARM\settings\CJMCU-811 CCS811 TVOC sensor.CJMCU-811_CCS811_TVOC_sensor.general.xcl" --backend -f "D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\CJMCU-811 CCS811 TVOC sensor\EWARM\settings\CJMCU-811 CCS811 TVOC sensor.CJMCU-811_CCS811_TVOC_sensor.driver.xcl" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\EWARM\settings\CJMCU-811 CCS811 TVOC sensor.CJMCU-811_CCS811_TVOC_sensor.general.xcl" --backend -f "D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\EWARM\settings\CJMCU-811 CCS811 TVOC sensor.CJMCU-811_CCS811_TVOC_sensor.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\CJMCU-811 CCS811 TVOC sensor\EWARM\settings\CJMCU-811 CCS811 TVOC sensor.CJMCU-811_CCS811_TVOC_sensor.general.xcl" "--debug_file=%~1" --backend -f "D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\CJMCU-811 CCS811 TVOC sensor\EWARM\settings\CJMCU-811 CCS811 TVOC sensor.CJMCU-811_CCS811_TVOC_sensor.driver.xcl" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\EWARM\settings\CJMCU-811 CCS811 TVOC sensor.CJMCU-811_CCS811_TVOC_sensor.general.xcl" "--debug_file=%~1" --backend -f "D:\Work\Programming\Sensors\Temperature_and_CO2_to_display\TVOC-Temperature-Humidity-BOX\EWARM\settings\CJMCU-811 CCS811 TVOC sensor.CJMCU-811_CCS811_TVOC_sensor.driver.xcl" 
 
 @echo off 
 :end
