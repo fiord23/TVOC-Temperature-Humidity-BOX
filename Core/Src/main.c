@@ -43,7 +43,7 @@ int AHT10_Humidity_int[2];
 uint8_t AHT10_TmpHum_Cmd = 0xAC; 
     
 uint8_t data[10];      
-    
+    uint8_t datat;
 uint8_t reset[] = {0x11, 0xE5, 0x72, 0x8A};
 uint8_t data1[10];   
 
@@ -118,10 +118,11 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
- //MX_I2C1_Init();
-  i2c1_init (); // useer function
+  MX_I2C1_Init();
+  //i2c1_init (); // useer function
   /* USER CODE BEGIN 2 */
-
+datat =i2c1_read (TVOC_Adress, HW_ID);
+/*
    LCD_ini();
   uint8_t APP_START_REG1_1 = 0xF4; 
   
@@ -147,7 +148,7 @@ int main(void)
          HAL_Delay(100);        
   // CCS811_ini ();
    
-
+*/
 
   /* USER CODE END 2 */
 
@@ -155,7 +156,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    
+    datat =i2c1_read(TVOC_Adress, HW_ID);
+    HAL_Delay(100); 
+    /*
     HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, ALG_RESULT_DATA, 1, data, 8,300);
     eco2_data = ((data[0]<<8)|(data[1]<<0));
  
@@ -216,7 +219,7 @@ AHT10_Humidity_int[1]  = ((int) (AHT10_Humidity*100)%100);
     LCD_SendChar((AHT10_Humidity_int[1])%10 + 0x30);
 HAL_Delay(500);
 
-
+*/
 
     /* USER CODE END WHILE */
 

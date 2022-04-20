@@ -27,3 +27,36 @@ void i2c1_init (void)
   NVIC_EnableIRQ(I2C1_EV_IRQn); // Enable Interrupt Event
   
 }
+
+uint8_t i2c1_read (uint8_t address, uint8_t reg )
+{
+  //----write address and target reigster------
+  I2C1->CR1 |= (1 << I2C_CR1_START_Pos); //Set the start bit
+  while(!(I2C1->SR1 & I2C_SR1_SB)); 
+  uint8_t a =0 ; //temp value
+  uint8_t b;
+  a = I2C1->SR1; //read Status register for clear SB
+  I2C1->DR = (address) + 0; //+1 for read, 0  for write  WRITING TARGET ADDRESS
+  while(!(I2C1->SR1 & I2C_SR1_ADDR)); //Clearing ADDR 
+  a = I2C1->SR1; //read SR1
+  a = I2C1->SR2;  // read SR2
+  while(!(I2C1->SR1 & I2C_SR1_TXE)); //wait while tx not empty
+  I2C1->DR = reg; // write target register to DR
+  I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
+ 
+  //-----Write address and read data from target register------
+    I2C1->CR1 |= (1 << I2C_CR1_START_Pos); //Set the start bit
+  while(!(I2C1->SR1 & I2C_SR1_SB));
+  a = I2C1->SR1;  //read Status register for clear SB
+  I2C1->DR = (address)+1; //+1 for read, 0  for write //wite address of target device +1 for read data
+  while(!(I2C1->SR1 & I2C_SR1_ADDR)); //Clearing ADDR 
+  a = I2C1->SR1; //read SR1
+  a = I2C1->SR2; // read SR2
+  //while(!(I2C1->SR1 & I2C_SR1_TXE));
+   while(!(I2C1->SR1 & I2C_SR1_RXNE));
+  b = I2C1->DR;
+ I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
+ return b;
+  
+  
+}
