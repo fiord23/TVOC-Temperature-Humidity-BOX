@@ -121,7 +121,16 @@ int main(void)
   MX_I2C1_Init();
   //i2c1_init (); // useer function
   /* USER CODE BEGIN 2 */
+  
 datat =i2c1_read (TVOC_Adress, HW_ID);
+datat =i2c1_read (TVOC_Adress, APP_START_REG1);
+datat =i2c1_read (TVOC_Adress, STATUS);
+i2c1_write (TVOC_Adress, MEAS_MODE, 0x40);
+datat =i2c1_read (TVOC_Adress, HW_ID);
+datat =i2c1_read (TVOC_Adress, MEAS_MODE);
+datat =i2c1_read (TVOC_Adress, HW_ID);
+
+
 /*
    LCD_ini();
   uint8_t APP_START_REG1_1 = 0xF4; 
@@ -156,8 +165,9 @@ datat =i2c1_read (TVOC_Adress, HW_ID);
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    datat =i2c1_read(TVOC_Adress, HW_ID);
+ //   datat =i2c1_read(TVOC_Adress, HW_ID);
     HAL_Delay(100); 
+    i2c1_write (TVOC_Adress, MEAS_MODE, 0x40);
     /*
     HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, ALG_RESULT_DATA, 1, data, 8,300);
     eco2_data = ((data[0]<<8)|(data[1]<<0));

@@ -20,11 +20,15 @@ void i2c1_init (void)
   I2C1->CR2 |= (0x2d << I2C_CR2_FREQ_Pos);//Set frequency0x2d
   I2C1->CCR |= (0x0e1 << I2C_CCR_CCR_Pos);//Clock control Register CCR 0x0e1
   I2C1->TRISE |= (0x2e << I2C_TRISE_TRISE_Pos);//TRISE =0x2e
-  I2C1->CR1 |= (1 << I2C_CR1_PE_Pos);//PE = 1 enable peripheral
-  NVIC_SetPriority(I2C1_ER_IRQn, 0); //Set interrupt Error priority 0
+  
+  
+    NVIC_SetPriority(I2C1_ER_IRQn, 0); //Set interrupt Error priority 0
   NVIC_SetPriority(I2C1_EV_IRQn, 1);// Set interrupt Event to 1
   NVIC_EnableIRQ(I2C1_ER_IRQn); //Enable Interrupt error
   NVIC_EnableIRQ(I2C1_EV_IRQn); // Enable Interrupt Event
+  I2C1->CR1 |= (1 << I2C_CR1_PE_Pos);//PE = 1 enable periphera
+  
+
   
 }
 
@@ -57,6 +61,27 @@ uint8_t i2c1_read (uint8_t address, uint8_t reg )
   b = I2C1->DR;
  I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
  return b;
-  
-  
 }
+
+void i2c1_write (uint8_t address, uint8_t reg, uint8_t regdata )
+{
+  //----write address and target reigster------
+  I2C1->CR1 |= (1 << I2C_CR1_START_Pos); //Set the start bit
+  while(!(I2C1->SR1 & I2C_SR1_SB)); 
+  uint8_t a =0 ; //temp value
+  a = I2C1->SR1; //read Status register for clear SB
+  I2C1->DR = (address) + 0; //+1 for read, 0  for write  WRITING TARGET ADDRESS
+  while(!(I2C1->SR1 & I2C_SR1_ADDR)); //Clearing ADDR 
+  a = I2C1->SR1; //read SR1
+  a = I2C1->SR2;  // read SR2
+  while(!(I2C1->SR1 & I2C_SR1_TXE)); //wait while tx not empty
+  I2C1->DR = reg; // write target register to DR
+ 
+  //-----Write  data from target register------
+  while(!(I2C1->SR1 & I2C_SR1_TXE)); //wait while tx not empty
+  I2C1->DR = regdata;
+ I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
+
+}
+
+
