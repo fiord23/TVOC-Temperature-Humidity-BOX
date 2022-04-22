@@ -9,7 +9,7 @@
         <stlinkResetStrategy>2</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>3969381701</Checksum>
+        <Checksum>182534755</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -127,10 +127,10 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\main.c}.131.1" 0 0 1 "" 0 "" 0</Bp0>
-        <Bp1>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\main.c}.127.1" 0 0 1 "" 0 "" 0</Bp1>
-        <Bp2>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\main.c}.128.1" 0 0 1 "" 0 "" 0</Bp2>
-        <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\main.c}.129.1" 0 0 1 "" 0 "" 0</Bp3>
+        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\main.c}.172.5" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp1>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\main.c}.136.9" 0 0 1 "" 0 "" 0</Bp1>
+        <Bp2>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\main.c}.136.9" 0 0 1 "" 0 "" 0</Bp2>
+        <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\main.c}.132.1" 0 0 1 "" 0 "" 0</Bp3>
         <Count>4</Count>
     </Breakpoints2>
     <TermIOLog>
