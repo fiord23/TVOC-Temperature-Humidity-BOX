@@ -77,16 +77,8 @@ void i2c1_write (uint8_t address, uint8_t reg, uint8_t regdata )
   while(!(I2C1->SR1 & I2C_SR1_TXE)); //wait while tx not empty
   I2C1->DR = reg; // write target register to DR
   while(!(I2C1->SR1 & I2C_SR1_BTF));
-    //while((I2C1->SR1 & I2C_SR1_TXE))
-  //  while(!(I2C1->SR1 & I2C_SR1_TXE)); //wait while tx not empty
   I2C1->DR = regdata;
  I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
-//   I2C1->DR = regdata;
- // I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
- 
-
-  //-----Write  data from target register------
-
 
 }
 
