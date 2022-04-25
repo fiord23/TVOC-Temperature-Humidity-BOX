@@ -91,7 +91,8 @@ static void MX_I2C1_Init(void);
   * @retval int
   */
 
-int main(void)
+
+    int main(void)
 {
   /* USER CODE BEGIN 1 */
   char co2[] = "C:";
@@ -119,23 +120,33 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C1_Init();
-  //i2c1_init (); // useer function
+ // i2c1_init (); // useer function
    /* USER CODE BEGIN 2 */
+
+HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, HW_ID, 1, data1, 1,300);
   
 datat =i2c1_read (TVOC_Adress, HW_ID);
-datat =i2c1_read (TVOC_Adress, APP_START_REG1);
+
+i2c1_write (TVOC_Adress, APP_START_REG1, 0x00);
+//datat =i2c1_read (TVOC_Adress, APP_START_REG1);
 datat =i2c1_read (TVOC_Adress, STATUS);
-i2c1_write (TVOC_Adress, MEAS_MODE, 0x40);
-datat =i2c1_read (TVOC_Adress, HW_ID);
+i2c1_write2 (TVOC_Adress, MEAS_MODE, 0x40);
+i2c1_write_some_bytes(TVOC_Adress, SW_RESET, reset, 4);
+datat =i2c1_read (TVOC_Adress, STATUS);
+//i2c1_write_some_bytes(TVOC_Adress, SW_RESET, reset, 4);
+//datat =i2c1_read (TVOC_Adress, STATUS);
 
-datat =i2c1_read (TVOC_Adress, MEAS_MODE);
-datat =i2c1_read (TVOC_Adress, HW_ID);
+//datat =i2c1_read (TVOC_Adress, HW_ID);
 
+//datat =i2c1_read (TVOC_Adress, MEAS_MODE);
+//datat =i2c1_read (TVOC_Adress, HW_ID);
+//i2c1_read_some_bytes (TVOC_Adress, ALG_RESULT_DATA, data1 , 8 );
+//datat =i2c1_read (TVOC_Adress, HW_ID);
 
+LCD_ini();
 
-        HAL_Delay(100); 
 /*
-   LCD_ini();
+   
   uint8_t APP_START_REG1_1 = 0xF4; 
   
         HAL_I2C_Mem_Write( &hi2c1, TVOC_Adress, SW_RESET, 1, reset, 4,300);
@@ -168,8 +179,9 @@ datat =i2c1_read (TVOC_Adress, HW_ID);
   /* USER CODE BEGIN WHILE */
   while (1)
   {
- //   datat =i2c1_read(TVOC_Adress, HW_ID);
-    HAL_Delay(100); 
+    datat =i2c1_read (TVOC_Adress, MEAS_MODE);
+
+ //    HAL_Delay(100); 
   //  i2c1_write (TVOC_Adress, MEAS_MODE, 0x40);
     /*
     HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, ALG_RESULT_DATA, 1, data, 8,300);
