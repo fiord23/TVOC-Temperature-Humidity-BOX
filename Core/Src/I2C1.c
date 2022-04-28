@@ -147,8 +147,8 @@ void i2c1_write (uint8_t address, uint8_t reg, uint8_t regdata )
   while(!(I2C1->SR1 & I2C_SR1_TXE)) {};
  
  
-  //I2C1->DR = regdata;
- //  while(!(I2C1->SR1 & I2C_SR1_TXE)) {};
+  I2C1->DR = regdata;
+   while(!(I2C1->SR1 & I2C_SR1_TXE)) {};
   //while(!(I2C1->SR1 & I2C_SR1_TXE)); //wait while tx not empty
 
   

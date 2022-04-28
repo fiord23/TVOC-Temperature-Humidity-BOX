@@ -1433,6 +1433,33 @@
             <group>
                 <name>Core</name>
                 <group>
+                    <name>BMP280</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Src\BMP280.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Inc\BMP280.h</name>
+                    </file>
+                </group>
+                <group>
+                    <name>CCS811</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Src\CCS811.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Inc\CCS811.h</name>
+                    </file>
+                </group>
+                <group>
+                    <name>DISPLAY</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Src\spi_ili9341.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Inc\spi_ili9341.h</name>
+                    </file>
+                </group>
+                <group>
                     <name>Drivers</name>
                     <group>
                         <name>CMSIS</name>
@@ -1498,26 +1525,17 @@
                         </file>
                     </group>
                 </group>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Src\CCS811.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\CCS811.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Src\I2C1.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\I2C1.h</name>
-                </file>
+                <group>
+                    <name>I2C1</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Src\I2C1.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Inc\I2C1.h</name>
+                    </file>
+                </group>
                 <file>
                     <name>$PROJ_DIR$\..\Core\Src\main.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Src\spi_ili9341.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Core\Inc\spi_ili9341.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\Core\Src\stm32f4xx_hal_msp.c</name>

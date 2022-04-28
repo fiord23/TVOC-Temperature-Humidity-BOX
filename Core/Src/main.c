@@ -19,7 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include "BMP280.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "CCS811.h"
@@ -27,8 +27,12 @@
 #include "I2C1.h"
 
 #define AHT10_Adress 0x38 << 1   
-
-
+    double var1= 0;
+    double var2 = 0;
+    double t_fine;
+    signed long temp280;
+    unsigned short dig_T1;
+    short dig_T2, dig_T3;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,6 +109,7 @@ static void MX_I2C1_Init(void);
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
+  MX_GPIO_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -114,25 +119,28 @@ static void MX_I2C1_Init(void);
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+// MX_I2C1_Init();
+  i2c1_init (); 
+  
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_I2C1_Init();
- // i2c1_init (); // useer function
+ 
+ // useer function
    /* USER CODE BEGIN 2 */
 
-HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, HW_ID, 1, data1, 1,300);
+//HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, HW_ID, 1, data1, 1,300);
   
-datat =i2c1_read (TVOC_Adress, HW_ID);
-
-i2c1_write (TVOC_Adress, APP_START_REG1, 0x00);
+datat =i2c1_read (BMP280_ADDRESS, 0xD0);
+i2c1_write2 (BMP280_ADDRESS, 0xF4, 0x23);
+datat =i2c1_read (BMP280_ADDRESS, 0xD0);
+datat =i2c1_read (BMP280_ADDRESS, 0xF4);
+//i2c1_write (TVOC_Adress, APP_START_REG1, 0x00);
 //datat =i2c1_read (TVOC_Adress, APP_START_REG1);
-datat =i2c1_read (TVOC_Adress, STATUS);
-i2c1_write2 (TVOC_Adress, MEAS_MODE, 0x40);
-i2c1_write_some_bytes(TVOC_Adress, SW_RESET, reset, 4);
-datat =i2c1_read (TVOC_Adress, STATUS);
+//datat =i2c1_read (TVOC_Adress, STATUS);
+//i2c1_write2 (TVOC_Adress, MEAS_MODE, 0x40);
+//i2c1_write_some_bytes(TVOC_Adress, SW_RESET, reset, 4);
+//datat =i2c1_read (TVOC_Adress, STATUS);
 //i2c1_write_some_bytes(TVOC_Adress, SW_RESET, reset, 4);
 //datat =i2c1_read (TVOC_Adress, STATUS);
 
@@ -179,7 +187,33 @@ LCD_ini();
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    datat =i2c1_read (TVOC_Adress, MEAS_MODE);
+/*
+   LCD_SetPos(0,0);
+    LCD_String(co2);  
+  //  datat =i2c1_read (TVOC_Adress, MEAS_MODE);
+data1[0] =i2c1_read (BMP280_ADDRESS, 0xFA);
+data1[1] =i2c1_read (BMP280_ADDRESS, 0xFB);
+temp280 = (data1[0] <<12 | data1[1] << 4);
+
+data1[2] = i2c1_read (BMP280_ADDRESS, 0x89);
+data1[3] = i2c1_read (BMP280_ADDRESS, 0x88);
+dig_T1 = (data1[2] <<8 | data1[3]);
+
+data1[4] = i2c1_read (BMP280_ADDRESS, 0x8B);
+data1[5] = i2c1_read (BMP280_ADDRESS, 0x8A);
+dig_T2 = (data1[4] <<8 | data1[5]);
+
+data1[6] = i2c1_read (BMP280_ADDRESS, 0x8D);
+data1[7] = i2c1_read (BMP280_ADDRESS, 0x8C);
+dig_T3 = (data1[6] <<8 | data1[7]);
+
+
+var1 = (((double)temp280)/16384.0 - ((double)dig_T1)/1024.0)*((double)dig_T2);
+var2= ((((double)temp280)/131072.0 - ((double)dig_T1)/8192.0)*(((double)temp280)/131072.0 - ((double)dig_T1)/8192.0))*((double)dig_T3);
+t_fine = (var1+var2)/5120.0;
+//var2 = ((double)temp280)/131072.0;
+*/
+HAL_Delay(1000);
 
  //    HAL_Delay(100); 
   //  i2c1_write (TVOC_Adress, MEAS_MODE, 0x40);

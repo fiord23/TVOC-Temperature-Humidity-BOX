@@ -9,7 +9,7 @@
         <stlinkResetStrategy>2</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>4001195509</Checksum>
+        <Checksum>1225320138</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -76,7 +76,9 @@
     <watch_formats>
         <Fmt0>{W}42:AHT10_Humidity	0	9</Fmt0>
         <Fmt1>{W}42:AHT10_Temperature	0	9</Fmt1>
-        <Fmt2>{W}42:eco2_data	3	0</Fmt2>
+        <Fmt2>{W}42:dig_T1	3	0</Fmt2>
+        <Fmt3>{W}42:eco2_data	3	0</Fmt3>
+        <Fmt4>{W}42:temp280	3	0</Fmt4>
     </watch_formats>
     <Trace2>
         <Enabled>0</Enabled>
