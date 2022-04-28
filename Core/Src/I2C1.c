@@ -129,7 +129,7 @@ void i2c1_read_some_bytes (uint8_t address, uint8_t reg, uint8_t* regdata, uint8
 
 
 
-void i2c1_write (uint8_t address, uint8_t reg, uint8_t regdata )
+void i2c1_writex (uint8_t address, uint8_t reg, uint8_t regdata )
 {
    //while(!(I2C1->SR2 & I2C_SR2_BUSY)); 
   I2C1->CR1 &=~ (1 << I2C_CR1_POS_Pos); // Disable Pos
@@ -156,7 +156,7 @@ void i2c1_write (uint8_t address, uint8_t reg, uint8_t regdata )
  I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
 }
 
-void i2c1_write2 (uint8_t address, uint8_t reg, uint8_t regdata )
+void i2c1_write (uint8_t address, uint8_t reg, uint8_t regdata )
 {
    //while(!(I2C1->SR2 & I2C_SR2_BUSY)); 
   I2C1->CR1 &=~ (1 << I2C_CR1_POS_Pos); // Disable Pos

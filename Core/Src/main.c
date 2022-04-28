@@ -26,13 +26,8 @@
 #include "spi_ili9341.h"
 #include "I2C1.h"
 
-#define AHT10_Adress 0x38 << 1   
-    double var1= 0;
-    double var2 = 0;
-    double t_fine;
-    signed long temp280;
-    unsigned short dig_T1;
-    short dig_T2, dig_T3;
+//#define AHT10_Adress 0x38 << 1   
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -120,8 +115,9 @@ static void MX_I2C1_Init(void);
 
   /* USER CODE BEGIN SysInit */
 // MX_I2C1_Init();
+  LCD_ini();
   i2c1_init (); 
-  
+  bmp280_init();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -131,10 +127,10 @@ static void MX_I2C1_Init(void);
 
 //HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, HW_ID, 1, data1, 1,300);
   
-datat =i2c1_read (BMP280_ADDRESS, 0xD0);
-i2c1_write2 (BMP280_ADDRESS, 0xF4, 0x23);
-datat =i2c1_read (BMP280_ADDRESS, 0xD0);
-datat =i2c1_read (BMP280_ADDRESS, 0xF4);
+//datat =i2c1_read (BMP280_ADDRESS, 0xD0);
+//i2c1_write2 (BMP280_ADDRESS, 0xF4, 0x23);
+//datat =i2c1_read (BMP280_ADDRESS, 0xD0);
+//datat =i2c1_read (BMP280_ADDRESS, 0xF4);
 //i2c1_write (TVOC_Adress, APP_START_REG1, 0x00);
 //datat =i2c1_read (TVOC_Adress, APP_START_REG1);
 //datat =i2c1_read (TVOC_Adress, STATUS);
@@ -151,7 +147,7 @@ datat =i2c1_read (BMP280_ADDRESS, 0xF4);
 //i2c1_read_some_bytes (TVOC_Adress, ALG_RESULT_DATA, data1 , 8 );
 //datat =i2c1_read (TVOC_Adress, HW_ID);
 
-LCD_ini();
+
 
 /*
    
@@ -187,6 +183,8 @@ LCD_ini();
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    bmp280_getTemperature();
+    HAL_Delay(1000);
 /*
    LCD_SetPos(0,0);
     LCD_String(co2);  

@@ -9,7 +9,7 @@
         <stlinkResetStrategy>2</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>1225320138</Checksum>
+        <Checksum>2296117902</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -68,11 +68,6 @@
         <EnableCache>0</EnableCache>
         <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
-    <LogFile>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-        <Category2>_ 0</Category2>
-    </LogFile>
     <watch_formats>
         <Fmt0>{W}42:AHT10_Humidity	0	9</Fmt0>
         <Fmt1>{W}42:AHT10_Temperature	0	9</Fmt1>
@@ -80,6 +75,11 @@
         <Fmt3>{W}42:eco2_data	3	0</Fmt3>
         <Fmt4>{W}42:temp280	3	0</Fmt4>
     </watch_formats>
+    <LogFile>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+        <Category2>_ 0</Category2>
+    </LogFile>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>

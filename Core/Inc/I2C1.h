@@ -4,8 +4,8 @@
 
 void i2c1_init();
 uint8_t i2c1_read(uint8_t , uint8_t);
+void i2c1_writex (uint8_t, uint8_t, uint8_t);
 void i2c1_write (uint8_t, uint8_t, uint8_t);
-void i2c1_write2 (uint8_t, uint8_t, uint8_t);
 void i2c1_write_some_bytes (uint8_t, uint8_t, uint8_t* , uint8_t);
 void i2c1_read_some_bytes (uint8_t, uint8_t, uint8_t* , uint8_t );
 #endif //I2C1
