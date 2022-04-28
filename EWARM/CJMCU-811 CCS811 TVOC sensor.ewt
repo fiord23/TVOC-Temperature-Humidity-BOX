@@ -1433,6 +1433,15 @@
             <group>
                 <name>Core</name>
                 <group>
+                    <name>AHT10</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Src\AHT10.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Inc\AHT10.h</name>
+                    </file>
+                </group>
+                <group>
                     <name>BMP280</name>
                     <file>
                         <name>$PROJ_DIR$\..\Core\Src\BMP280.c</name>

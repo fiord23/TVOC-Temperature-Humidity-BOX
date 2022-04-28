@@ -1,5 +1,10 @@
 #ifndef __SPI_ILI9341_H
 #define __SPI_ILI9341_H
+
+//  char co2[] = "C:";
+ // char voc[] = "V:";
+  //char hum[] = "H:";
+  //char tem[] = "T:";
 //-------------------------------------------------------------------
 #include "stm32f4xx_hal.h"
 #define d4_set() HAL_GPIO_WritePin(GPIOD, GPIO_PIN_4, GPIO_PIN_SET)

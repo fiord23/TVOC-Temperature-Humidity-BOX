@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>5</fileVersion>
-    <fileChecksum>868977907</fileChecksum>
+    <fileChecksum>3337864566</fileChecksum>
     <configuration>
         <name>CJMCU-811 CCS811 TVOC sensor</name>
         <outputs>
@@ -107,11 +107,14 @@
             <file>$PROJ_DIR$\..\Core\Inc\BMP280.h</file>
             <file>$TOOLKIT_DIR$\lib\dl7M_tlf.a</file>
             <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+            <file>$PROJ_DIR$\..\Core\Inc\AHT10.h</file>
+            <file>$PROJ_DIR$\CJMCU-811 CCS811 TVOC sensor\Obj\Application\User\Core\AHT10\AHT10.o</file>
             <file>$PROJ_DIR$\..\Core\Src\BMP280.c</file>
             <file>$PROJ_DIR$\CJMCU-811 CCS811 TVOC sensor\Obj\Application\User\Core\DISPLAY\spi_ili9341.o</file>
             <file>$PROJ_DIR$\CJMCU-811 CCS811 TVOC sensor\Obj\Application\User\Core\BMP280\BMP280.o</file>
             <file>$PROJ_DIR$\CJMCU-811 CCS811 TVOC sensor\Obj\Application\User\Core\I2C1\I2C1.o</file>
             <file>$PROJ_DIR$\CJMCU-811 CCS811 TVOC sensor\Obj\Application\User\Core\CCS811\CCS811.o</file>
+            <file>$PROJ_DIR$\..\Core\Src\AHT10.c</file>
         </outputs>
         <file>
             <name>$PROJ_DIR$\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c</name>
@@ -266,7 +269,7 @@
             <inputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 100 54 16 71 9 32 104 106 103 47 49 68 10 75 17 44 56 62 43 48 18 35 23 41 36 60 19 28 105 24 70 13</file>
+                    <file> 100 54 16 71 9 32 103 106 108 105 47 49 68 10 75 17 44 56 62 43 48 18 35 23 41 36 60 19 28 107 24 70 13</file>
                 </tool>
             </inputs>
         </file>
@@ -275,7 +278,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 106</file>
+                    <file> 108</file>
                 </tool>
             </outputs>
             <inputs>
@@ -290,7 +293,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 105</file>
+                    <file> 107</file>
                 </tool>
             </outputs>
             <inputs>
@@ -350,7 +353,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 103</file>
+                    <file> 105</file>
                 </tool>
             </outputs>
             <inputs>
@@ -545,7 +548,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 104</file>
+                    <file> 106</file>
                 </tool>
             </outputs>
             <inputs>
@@ -554,6 +557,15 @@
                     <file> 51 21 66 50 101 69 74 46 99</file>
                 </tool>
             </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Core\Src\AHT10.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 103</file>
+                </tool>
+            </outputs>
         </file>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>

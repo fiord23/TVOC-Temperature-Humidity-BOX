@@ -31,27 +31,7 @@
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-//uint8_t id = HW_ID;
- uint8_t AHT10_RX_Data[6];
-uint32_t AHT10_ADC_Raw;
-float AHT10_Temperature;
-float AHT10_Humidity;
-int AHT10_Temperature_int[2];
-int AHT10_Humidity_int[2];
-uint8_t AHT10_TmpHum_Cmd = 0xAC; 
-    
-uint8_t data[10];      
-    uint8_t datat;
-uint8_t reset[] = {0x11, 0xE5, 0x72, 0x8A};
-uint8_t data1[10];   
-
-uint8_t meas[] = {0x40};
-uint8_t start[] = {0xF4, 0x00};
-
-uint16_t eco2_data = 0;
-uint16_t voc_data = 0;
-uint16_t eco2_dat = 0;
+/* USER CODE BEGIN PTD */    
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -93,194 +73,17 @@ static void MX_I2C1_Init(void);
 
     int main(void)
 {
-  /* USER CODE BEGIN 1 */
-  char co2[] = "C:";
-  char voc[] = "V:";
-  char hum[] = "H:";
-  char tem[] = "T:";
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-  MX_GPIO_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
+   HAL_Init();
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-// MX_I2C1_Init();
+  MX_GPIO_Init();
   LCD_ini();
   i2c1_init (); 
   bmp280_init();
-  /* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
- 
- // useer function
-   /* USER CODE BEGIN 2 */
-
-//HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, HW_ID, 1, data1, 1,300);
-  
-//datat =i2c1_read (BMP280_ADDRESS, 0xD0);
-//i2c1_write2 (BMP280_ADDRESS, 0xF4, 0x23);
-//datat =i2c1_read (BMP280_ADDRESS, 0xD0);
-//datat =i2c1_read (BMP280_ADDRESS, 0xF4);
-//i2c1_write (TVOC_Adress, APP_START_REG1, 0x00);
-//datat =i2c1_read (TVOC_Adress, APP_START_REG1);
-//datat =i2c1_read (TVOC_Adress, STATUS);
-//i2c1_write2 (TVOC_Adress, MEAS_MODE, 0x40);
-//i2c1_write_some_bytes(TVOC_Adress, SW_RESET, reset, 4);
-//datat =i2c1_read (TVOC_Adress, STATUS);
-//i2c1_write_some_bytes(TVOC_Adress, SW_RESET, reset, 4);
-//datat =i2c1_read (TVOC_Adress, STATUS);
-
-//datat =i2c1_read (TVOC_Adress, HW_ID);
-
-//datat =i2c1_read (TVOC_Adress, MEAS_MODE);
-//datat =i2c1_read (TVOC_Adress, HW_ID);
-//i2c1_read_some_bytes (TVOC_Adress, ALG_RESULT_DATA, data1 , 8 );
-//datat =i2c1_read (TVOC_Adress, HW_ID);
-
-
-
-/*
-   
-  uint8_t APP_START_REG1_1 = 0xF4; 
-  
-        HAL_I2C_Mem_Write( &hi2c1, TVOC_Adress, SW_RESET, 1, reset, 4,300);
-        HAL_Delay(100); 
-        HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, HW_ID, 1, data1, 1,300);
-         HAL_Delay(100); 
-        HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, STATUS, 1, data1, 1,300);
-         HAL_Delay(100); 
-         HAL_I2C_Master_Transmit(&hi2c1, TVOC_Adress, &APP_START_REG1_1, 1, 100);  
-         
-      //  HAL_I2C_Mem_Write( &hi2c1, TVOC_Adress, APP_START_REG1, 1, empty, 0,1000);
-        // HAL_Delay(100); 
-        HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, STATUS, 1, data1, 1,300);
-         HAL_Delay(100); 
-        HAL_I2C_Mem_Write( &hi2c1, TVOC_Adress, MEAS_MODE, 1, meas, 1,300);
-         HAL_Delay(100); 
-        HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, STATUS, 1, data1, 1,300);
-         HAL_Delay(100); 
-        HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, MEAS_MODE, 1, data1, 1,300);
-         HAL_Delay(100); 
-        HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, ALG_RESULT_DATA, 1, data1, 8,300);  
-         HAL_Delay(100);        
-  // CCS811_ini ();
-   
-*/
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
     bmp280_getTemperature();
     HAL_Delay(1000);
-/*
-   LCD_SetPos(0,0);
-    LCD_String(co2);  
-  //  datat =i2c1_read (TVOC_Adress, MEAS_MODE);
-data1[0] =i2c1_read (BMP280_ADDRESS, 0xFA);
-data1[1] =i2c1_read (BMP280_ADDRESS, 0xFB);
-temp280 = (data1[0] <<12 | data1[1] << 4);
-
-data1[2] = i2c1_read (BMP280_ADDRESS, 0x89);
-data1[3] = i2c1_read (BMP280_ADDRESS, 0x88);
-dig_T1 = (data1[2] <<8 | data1[3]);
-
-data1[4] = i2c1_read (BMP280_ADDRESS, 0x8B);
-data1[5] = i2c1_read (BMP280_ADDRESS, 0x8A);
-dig_T2 = (data1[4] <<8 | data1[5]);
-
-data1[6] = i2c1_read (BMP280_ADDRESS, 0x8D);
-data1[7] = i2c1_read (BMP280_ADDRESS, 0x8C);
-dig_T3 = (data1[6] <<8 | data1[7]);
-
-
-var1 = (((double)temp280)/16384.0 - ((double)dig_T1)/1024.0)*((double)dig_T2);
-var2= ((((double)temp280)/131072.0 - ((double)dig_T1)/8192.0)*(((double)temp280)/131072.0 - ((double)dig_T1)/8192.0))*((double)dig_T3);
-t_fine = (var1+var2)/5120.0;
-//var2 = ((double)temp280)/131072.0;
-*/
-HAL_Delay(1000);
-
- //    HAL_Delay(100); 
-  //  i2c1_write (TVOC_Adress, MEAS_MODE, 0x40);
-    /*
-    HAL_I2C_Mem_Read( &hi2c1, TVOC_Adress, ALG_RESULT_DATA, 1, data, 8,300);
-    eco2_data = ((data[0]<<8)|(data[1]<<0));
- 
-
-
-
-HAL_I2C_Master_Transmit(&hi2c1, AHT10_Adress, &AHT10_TmpHum_Cmd, 1, 100);
-HAL_Delay(100); // Delay must be > 75 ms
-HAL_I2C_Master_Receive(&hi2c1, AHT10_Adress, (uint8_t*)AHT10_RX_Data, 6, 100);
-
-AHT10_ADC_Raw = (((uint32_t)AHT10_RX_Data[3] & 15) << 16) | ((uint32_t)AHT10_RX_Data[4] << 8) | AHT10_RX_Data[5];
-AHT10_Temperature = (float)(AHT10_ADC_Raw * 200.00 / 1048576.00) - 50.00;
-AHT10_ADC_Raw = ((uint32_t)AHT10_RX_Data[1] << 12) | ((uint32_t)AHT10_RX_Data[2] << 4) | (AHT10_RX_Data[3] >> 4);
-AHT10_Humidity = (float)(AHT10_ADC_Raw*100.00/1048576.00);
-HAL_Delay(1000);  
-    
-AHT10_Temperature_int[0] = (int)AHT10_Temperature;
-AHT10_Temperature_int[1]  = ((int) (AHT10_Temperature*100)%100);
-
-AHT10_Humidity_int[0] = (int)AHT10_Humidity;
-AHT10_Humidity_int[1]  = ((int) (AHT10_Humidity*100)%100);
-
-
-    LCD_SetPos(0,0);
-    LCD_String(co2);
-
-    LCD_SendChar((eco2_data/10000)%10 + 0x30);
-    LCD_SendChar((eco2_data/1000)%10 + 0x30);
-    LCD_SendChar((eco2_data/100)%10 + 0x30);
-    LCD_SendChar((eco2_data/10)%10 + 0x30);
-    LCD_SendChar((eco2_data)%10 + 0x30);
-    
-    
-    voc_data = ((data[2]<<8)|(data[3]<<0));
-     LCD_SetPos(9,0);
-    LCD_String(voc);
-  
-    LCD_SendChar((voc_data/1000)%10 + 0x30); 
-    LCD_SendChar((voc_data/100)%10 + 0x30);
-    LCD_SendChar((voc_data/10)%10 + 0x30);
-    LCD_SendChar((voc_data)%10 + 0x30);
-
-    
-    LCD_SetPos(0,1);
-    LCD_String(tem);
-    LCD_SendChar((AHT10_Temperature_int[0]/10)%10 + 0x30);
-    LCD_SendChar((AHT10_Temperature_int[0])%10 + 0x30);
-    LCD_SendChar('.');
-    LCD_SendChar((AHT10_Temperature_int[1]/10)%10 + 0x30);
-    LCD_SendChar((AHT10_Temperature_int[1])%10 + 0x30);
-    
-    LCD_SetPos(9,1);
-    LCD_String(hum);
-    LCD_SendChar((AHT10_Humidity_int[0]/10)%10 + 0x30);
-    LCD_SendChar((AHT10_Humidity_int[0])%10 + 0x30);
-    LCD_SendChar('.');
-    LCD_SendChar((AHT10_Humidity_int[1]/10)%10 + 0x30);
-    LCD_SendChar((AHT10_Humidity_int[1])%10 + 0x30);
-HAL_Delay(500);
-
-*/
-
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -351,6 +154,7 @@ static void MX_I2C1_Init(void)
   /* USER CODE BEGIN I2C1_Init 1 */
 
   /* USER CODE END I2C1_Init 1 */
+  /*
   hi2c1.Instance = I2C1;
   hi2c1.Init.ClockSpeed = 100000;
   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
@@ -363,127 +167,24 @@ static void MX_I2C1_Init(void)
   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
   {
     Error_Handler();
-  }
+  } 
+*/
   /* USER CODE BEGIN I2C1_Init 2 */
 
   /* USER CODE END I2C1_Init 2 */
 
 }
 
-/**
-  * @brief I2C2 Initialization Function
-  * @param None
-  * @retval None
-  */
-
-
-/**
-  * @brief I2C3 Initialization Function
-  * @param None
-  * @retval None
-  */
-
-
-/**
-  * @brief SPI1 Initialization Function
-  * @param None
-  * @retval None
-  */
-
-
-/**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOF_CLK_ENABLE();
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-  __HAL_RCC_GPIOG_CLK_ENABLE();
+  //__HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LD1_Pin|LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : USER_Btn_Pin */
-  GPIO_InitStruct.Pin = USER_Btn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PA2 PA3 PA4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
-  GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : USB_PowerSwitchOn_Pin */
-  GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(USB_PowerSwitchOn_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : USB_OverCurrent_Pin */
-  GPIO_InitStruct.Pin = USB_OverCurrent_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PC6 PC7 PC8  */
-  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PC7 */
-//  GPIO_InitStruct.Pin = GPIO_PIN_7;
- // GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-//  GPIO_InitStruct.Pull = GPIO_NOPULL;
- // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-//  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : USB_VBUS_Pin */
-  GPIO_InitStruct.Pin = USB_VBUS_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USB_VBUS_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : USB_ID_Pin USB_DM_Pin USB_DP_Pin */
-  GPIO_InitStruct.Pin = USB_ID_Pin|USB_DM_Pin|USB_DP_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PD4 PD5 PD6 PD7 PD8 PD9 */
   GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7 |GPIO_PIN_8 |GPIO_PIN_9;

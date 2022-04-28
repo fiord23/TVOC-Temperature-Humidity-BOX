@@ -6,7 +6,7 @@
 void i2c1_init (void)
 {
   //------------------------SET GPIO FOR I2C1--------------------------
-  RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN_Msk << RCC_AHB1ENR_GPIOBEN_Pos; //set clocks for GPIOB 
+  RCC->AHB1ENR |= 1 << RCC_AHB1ENR_GPIOBEN_Pos; //set clocks for GPIOB 
   GPIOB->MODER &=~ (3 << GPIO_MODER_MODER8_Pos | 3 << GPIO_MODER_MODER9_Pos ); //RESET PB8, PB9 AF must be 0x2
   GPIOB->MODER |= (2 << GPIO_MODER_MODER8_Pos | 2 << GPIO_MODER_MODER9_Pos ); //SET PB8, PB9 AF I2C1
   GPIOB->AFR[1] |= (4 << GPIO_AFRH_AFSEL8_Pos | 4 << GPIO_AFRH_AFSEL9_Pos ); // SET I2C1 AFR  must be 0x4
@@ -52,11 +52,14 @@ uint8_t i2c1_read (uint8_t address, uint8_t reg )
   uint8_t b;
   I2C1->SR1; //read Status register for clear SB
   I2C1->DR = (address) + 0; //+1 for read, 0  for write  WRITING TARGET ADDRESS
-  while(!(I2C1->SR1 & I2C_SR1_ADDR)) {}; //Clearing ADDR 
+  while(!(I2C1->SR1 & I2C_SR1_ADDR)) 
+  { }; //Clearing ADDR 
   I2C1->SR1; //read SR1
   I2C1->SR2;  // read SR2
   I2C1->DR = reg; // write target register to DR
-  while(!(I2C1->SR1 & I2C_SR1_TXE)); //wait while tx not empty
+  while(!(I2C1->SR1 & I2C_SR1_TXE)) 
+  { }; 
+   //wait while tx not empty
   I2C1->CR1 |= (1 << I2C_CR1_START_Pos); //Set the start bit
 //  I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
  
@@ -142,11 +145,8 @@ void i2c1_writex (uint8_t address, uint8_t reg, uint8_t regdata )
   while(!(I2C1->SR1 & I2C_SR1_ADDR)) {}; //Clearing ADDR 
   I2C1->SR1; //read SR1
   I2C1->SR2;  // read SR2
-  
    I2C1->DR = reg; // write target register to DR
   while(!(I2C1->SR1 & I2C_SR1_TXE)) {};
- 
- 
   I2C1->DR = regdata;
    while(!(I2C1->SR1 & I2C_SR1_TXE)) {};
   //while(!(I2C1->SR1 & I2C_SR1_TXE)); //wait while tx not empty
@@ -166,13 +166,13 @@ void i2c1_write (uint8_t address, uint8_t reg, uint8_t regdata )
   while(!(I2C1->SR1 & I2C_SR1_SB)){}; 
   I2C1->SR1; //read Status register for clear SB
   I2C1->DR = (address) + 0; //+1 for read, 0  for write  WRITING TARGET ADDRESS
-  while(!(I2C1->SR1 & I2C_SR1_ADDR)) {}; //Clearing ADDR 
+  while(!(I2C1->SR1 & I2C_SR1_ADDR)) { }; //Clearing ADDR 
   I2C1->SR1; //read SR1
   I2C1->SR2;  // read SR2 
    I2C1->DR = reg; // write target register to DR
-  while(!(I2C1->SR1 & I2C_SR1_TXE)) {};
+  while(!(I2C1->SR1 & I2C_SR1_TXE))  {  };
   I2C1->DR = regdata;
-  while(!(I2C1->SR1 & I2C_SR1_TXE)) {};
+  while(!(I2C1->SR1 & I2C_SR1_TXE))  {};
   I2C1->CR1 |= (1 << I2C_CR1_STOP_Pos); // Stop Bit
 }
 
