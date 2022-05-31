@@ -72,3 +72,4 @@
 
 void bmp280_init(void);
 void bmp280_getTemperature(void);
+void bmp280_getPressure(void);

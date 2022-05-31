@@ -1535,6 +1535,15 @@
                     </group>
                 </group>
                 <group>
+                    <name>HTU21D</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Src\HTU21D.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\Core\Inc\HTU21D.h</name>
+                    </file>
+                </group>
+                <group>
                     <name>I2C1</name>
                     <file>
                         <name>$PROJ_DIR$\..\Core\Src\I2C1.c</name>

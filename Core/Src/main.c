@@ -20,6 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "BMP280.h"
+#include "HTU21D.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "CCS811.h"
@@ -78,12 +79,12 @@ static void MX_I2C1_Init(void);
   MX_GPIO_Init();
   LCD_ini();
   i2c1_init (); 
-  bmp280_init();
+//  bmp280_init();
 
   while (1)
   {
-    bmp280_getTemperature();
-    HAL_Delay(1000);
+   htu21d_getTemperature();
+   HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }
